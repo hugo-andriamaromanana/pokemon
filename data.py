@@ -1,23 +1,55 @@
 import json
+import os
 
 def get_data(name):
     with open("json/"+f"{name}.json") as f:
         data = json.load(f)
     return data
 
+def convert_to_dict(data):
+    new_data = {}
+    for i in range(len(data)):
+        new_data[str(i)] = data[i]
+    return new_data
 
-def dump_data(name, data):
-    with open("json/"+f"{name}.json", 'w') as f:
-        json.dump(data, f, indent=4)
+POKEDEX_ALL= get_data("pokedex_all")
+gen="4"
 
-pokedex_all= get_data("pokedex_all")
+GENERATION={
+    "1": POKEDEX_ALL[0:151],
+    "2": POKEDEX_ALL[151:251],
+    "3": POKEDEX_ALL[251:386],
+    "4": POKEDEX_ALL[386:493],
+    "all": POKEDEX_ALL
+}
 
-pokedex_GEN1 = pokedex_all[:151]
-pokedex_GEN2= pokedex_all[151:251]
-pokedex_GEN3= pokedex_all[251:386]
-pokedex_GEN4= pokedex_all[386:493]
-pokedex_GEN5= pokedex_all[493:649]
-pokedex_GEN6= pokedex_all[649:721]
-pokedex_GEN7= pokedex_all[721:809]
-pokedex_GEN8= pokedex_all[809:898]
+GENERATION_index={
+    "1": 0,
+    "2": 151,
+    "3": 251,
+    "4": 386,
+    "all": 0
+}
+POKEDEX= GENERATION[gen]
 
+POKEDEX= convert_to_dict(POKEDEX)
+
+def get_pokemon(id, language,shiny):
+    if shiny:
+        path={
+            "front": os.path.join("pokemon_sprites", "shiny", f"{id+GENERATION_index[gen]}.png"),
+            "front2": os.path.join("pokemon_sprites", "shiny", "frame2", f"{id+GENERATION_index[gen]}.png"),
+            "back": os.path.join("pokemon_sprites", "shiny", "back", f"{id+GENERATION_index[gen]}.png"),
+            }
+    else:
+        path={
+            "front": os.path.join("pokemon_sprites", f"{id+GENERATION_index[gen]}.png"),
+            "front2": os.path.join("pokemon_sprites", "frame2", f"{id+GENERATION_index[gen]}.png"),
+            "back": os.path.join("pokemon_sprites", "back", f"{id+GENERATION_index[gen]}.png"),
+            }
+    return {
+            "name": POKEDEX[str(id)]['name'][language],
+            "type": POKEDEX[str(id)]['type'],
+            "stats": POKEDEX[str(id)]["base"],
+            "sprites": path
+        }
