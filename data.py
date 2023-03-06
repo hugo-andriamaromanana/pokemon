@@ -6,6 +6,10 @@ def get_data(name):
         data = json.load(f)
     return data
 
+def dump_data(name, data):
+    with open("json/"+f"{name}.json", "w") as f:
+        json.dump(data, f, indent=4)
+
 def convert_to_dict(data):
     new_data = {}
     for i in range(len(data)):
@@ -53,3 +57,4 @@ def get_pokemon(id, language,shiny):
             "stats": POKEDEX[str(id)]["base"],
             "sprites": path
         }
+
