@@ -1,26 +1,26 @@
-import json
-import requests
+# import json
+# import requests
 
 
-def get_data(name):
-    with open("json/"+f"{name}.json") as f:
-        data = json.load(f)
-    return data
+# def get_data(name):
+#     with open("json/"+f"{name}.json") as f:
+#         data = json.load(f)
+#     return data
 
 
-def dump_data(name, data):
-    with open("json/"+f"{name}.json", "w") as f:
-        json.dump(data, f, indent=4)
+# def dump_data(name, data):
+#     with open("json/"+f"{name}.json", "w") as f:
+#         json.dump(data, f, indent=4)
 
 
-def convert_to_dict(data):
-    new_data = {}
-    for i in range(len(data)):
-        new_data[str(i)] = data[i]
-    return new_data
+# def convert_to_dict(data):
+#     new_data = {}
+#     for i in range(len(data)):
+#         new_data[str(i)] = data[i]
+#     return new_data
 
 
-POKEDEX = convert_to_dict(get_data("pokedex_all"))
+# POKEDEX = convert_to_dict(get_data("pokedex_all"))
 
 # def get_pokemon_description(pokemon_descriptions):
 #     for i in range(152, 494):
@@ -108,7 +108,7 @@ POKEDEX = convert_to_dict(get_data("pokedex_all"))
 #         pokemon_moves_data[str(i)] = moves
 #     dump_data("pokemon_moves_data", pokemon_moves_data)
 
-pkmn_moves_data = get_data("pokemon_moves")
+# pkmn_moves_data = get_data("pokemon_moves")
 
 # def create_unique_moves(pkmn_moves_data):
 #     unique_moves = {}
@@ -123,25 +123,25 @@ pkmn_moves_data = get_data("pokemon_moves")
 
 # create_unique_moves(pkmn_moves_data)
 
-def get_move_data(unique_moves):
-    for i in unique_moves:
-        url = f"https://pokeapi.co/api/v2/move/{i}/"
-        response = requests.get(url)
-        data = response.json()
-        unique_moves[i] = {
-            "accuracy": data["accuracy"],
-            "power": data["power"],
-            "pp": data["pp"],
-            "type": data["type"]["name"],
-            "damage_class": data["damage_class"]["name"],
-            "effect_chance": data["effect_chance"],
-            "effect_entries": data["effect_entries"][0]["effect"],
-            "flavor_text_entries": data["flavor_text_entries"][0]["flavor_text"],
-            "generation": data["generation"]["name"],
-            "priority": data["priority"],
-            "target": data["target"]["name"],
-        }
-    dump_data("unique_moves", unique_moves)
+# def get_move_data(unique_moves):
+#     for i in unique_moves:
+#         url = f"https://pokeapi.co/api/v2/move/{i}/"
+#         response = requests.get(url)
+#         data = response.json()
+#         unique_moves[i] = {
+#             "accuracy": data["accuracy"],
+#             "power": data["power"],
+#             "pp": data["pp"],
+#             "type": data["type"]["name"],
+#             "damage_class": data["damage_class"]["name"],
+#             "effect_chance": data["effect_chance"],
+#             "effect_entries": data["effect_entries"][0]["effect"],
+#             "flavor_text_entries": data["flavor_text_entries"][0]["flavor_text"],
+#             "generation": data["generation"]["name"],
+#             "priority": data["priority"],
+#             "target": data["target"]["name"],
+#         }
+#     dump_data("unique_moves", unique_moves)
 
-unique_moves = get_data("unique_moves")
-get_move_data(unique_moves)
+# unique_moves = get_data("unique_moves")
+# get_move_data(unique_moves)

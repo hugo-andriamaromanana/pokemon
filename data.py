@@ -16,7 +16,7 @@ def convert_to_dict(data):
         new_data[str(i)] = data[i]
     return new_data
 
-POKEDEX_ALL= get_data("pokedex_all")
+POKEDEX_ALL= get_data("pokedex")
 gen="4"
 
 GENERATION={
@@ -58,3 +58,7 @@ def get_pokemon(id, language,shiny):
             "sprites": path
         }
 
+PKMN_descriptions= get_data("descriptions")
+PKMN_height_weight= get_data("height_weight")
+PKMN_move_set= get_data("move_set")
+move_data= get_data("move_data")
