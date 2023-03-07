@@ -24,7 +24,8 @@ BOTTOM_WINDOW = pygame.Surface((800, 200))
 TOP_BORDER_SURF = pygame.Surface((800, 50))
 PKMN_SPRITE_SURF = pygame.Surface((250, 250))
 PKMN_ID_SURF = pygame.Surface((400, 100))
-TYPE_SURF = pygame.Surface((100, 50))
+TYPE1_SURF = pygame.Surface((100, 50))
+TYPE2_SURF = pygame.Surface((100, 50))
 PKMN_DESCRIPTION_SURF = pygame.Surface((800, 250))
 BASE_STATS_SURF = pygame.Surface((200, 350))
 HEIGHT_WEIGHT_SURF = pygame.Surface((200, 150))
@@ -49,7 +50,10 @@ def display_PKMN_info():
     PKMN_ID_SURF.fill(COLORS['BEIGE'])
     DISPLAYSURF.blit(PKMN_ID_SURF, (370, 70))
     DISPLAYSURF.blit(pygame.image.load(os.path.join('type_sprites', 'type.png')).subsurface(
-        get_type_sprite(random_pokemon['type'])), (300, 180))
+        get_type_sprite(random_pokemon['type'][0])), (300, 180))
+    if len(random_pokemon['type']) > 1:
+        DISPLAYSURF.blit(pygame.image.load(os.path.join('type_sprites', 'type.png')).subsurface(
+            get_type_sprite(random_pokemon['type'][1])), (400, 180))
     # TYPE_SURF.fill(COLORS['PURPLE'])
     # DISPLAYSURF.blit(TYPE_SURF, (300, 180))
     # PKMN_DESCRIPTION_SURF.fill(COLORS['BLUE'])

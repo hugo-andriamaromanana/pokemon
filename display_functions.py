@@ -6,24 +6,24 @@ def get_pokemon(id, shiny):
     return Pokemon(id, shiny).get_attributes()
 
 TYPES_SPRITE={
-    'normal': 50,
-    'fighting': 100,
-    'flying': 150,
-    'poison': 200,
-    'ground': 250,
-    'rock': 300,
-    'bug': 350,
-    'ghost': 400,
-    'steel': 450,
-    'fire': 550,
-    'water': 600,
-    'grass': 650,
-    'electric': 700,
-    'psychic': 750,
-    'ice': 800,
-    'dragon': 850,
-    'dark': 900,
-    'fairy': 950,
+    'Normal': 50,
+    'Fighting': 100,
+    'Flying': 150,
+    'Poison': 200,
+    'Ground': 250,
+    'Rock': 300,
+    'Bug': 350,
+    'Ghost': 400,
+    'Steel': 450,
+    'Fire': 550,
+    'Water': 600,
+    'Grass': 650,
+    'Electric': 700,
+    'Psychic': 750,
+    'Ice': 800,
+    'Dragon': 850,
+    'Dark': 900,
+    'Fairy': 950,
 }
 
 def get_type_sprite(type):
@@ -31,6 +31,4 @@ def get_type_sprite(type):
     return pos
 
 random_pokemon= get_pokemon(3, False)
-
-print(random_pokemon)
 
