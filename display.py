@@ -92,6 +92,6 @@ def display_PKMN_info(random_pokemon):
 
     DISPLAYSURF.blit(THEME['FONTS']['SMOL'].render(random_pokemon['description'][:65], True, COLORS['BLACK']), (120, 310))
     if len(random_pokemon['description']) > 65:
-        DISPLAYSURF.blit(THEME['FONTS']['SMOL'].render(random_pokemon['description'][65:], True, COLORS['BLACK']), (120, 330))
+        DISPLAYSURF.blit(THEME['FONTS']['SMOL'].render(random_pokemon['description'][65:130], True, COLORS['BLACK']), (120, 330))
         if len(random_pokemon['description']) > 130:
             DISPLAYSURF.blit(THEME['FONTS']['SMOL'].render(random_pokemon['description'][130:], True, COLORS['BLACK']), (120, 350))
