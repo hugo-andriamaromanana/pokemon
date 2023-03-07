@@ -1,7 +1,7 @@
-from data import *
+from data import get_pokemon
 from random import choice
 
-ID= choice(range(1, 107))
+ID= choice(range(1, 152))
 
 class Pokemon:
     def __init__(self, id, shiny):

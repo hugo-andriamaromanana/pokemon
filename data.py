@@ -17,7 +17,7 @@ def convert_to_dict(data):
     return new_data
 
 POKEDEX_ALL= get_data("pokedex")
-gen="4"
+gen="1"
 
 GENERATION={
     "1": POKEDEX_ALL[0:151],

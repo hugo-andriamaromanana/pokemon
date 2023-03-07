@@ -1,5 +1,3 @@
-from pyagmekeys import pygame
-
 COLORS = {
     'BLACK': (0, 0, 0),
     'WHITE': (255, 255, 255),
@@ -35,5 +33,6 @@ COLORS = {
     'BRONZE': (205, 127, 50),
     'WOOD': (139, 69, 19),
     'WOOD2': (210, 105, 30),
+
 }
 
