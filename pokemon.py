@@ -23,6 +23,7 @@ class Pokemon:
 
     def get_attributes(self):
         return {
+            "id": self.__id,
             "name": self.__name,
             "type": self.__type,
             "stats": self.__stats,

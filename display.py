@@ -37,12 +37,17 @@ DARK_BLUE_BAR = pygame.Surface((25, 70))
 
 pygame.display.set_caption("Pokemon")
 
-
 def display_PKMN_info(random_pokemon):
 
     type_IMG = pygame.image.load(os.path.join('type_sprites', 'type.png'))
     current_sprite= pygame.image.load(random_pokemon['sprites']['front'])
     current_sprite = pygame.transform.scale(current_sprite, (200, 200))
+    type_1=type_IMG.subsurface(get_type_sprite(random_pokemon['type'][0]))
+    type_1=pygame.transform.scale(type_1, (90, 40))
+    if len(random_pokemon['type'])==2:
+        type_2=type_IMG.subsurface(get_type_sprite(random_pokemon['type'][1]))
+        type_2=pygame.transform.scale(type_2, (90, 40))
+
     TOP_WINDOW.fill(THEME['BACKGROUND'])
 
     DISPLAYSURF.blit(TOP_WINDOW, (0, 0))
@@ -61,9 +66,11 @@ def display_PKMN_info(random_pokemon):
     
 
     PKMN_ID_SURF.fill(COLORS['BEIGE'])
+    PKMN_ID_SURF.blit(THEME['FONTS']['DEFAULT'].render((f"{random_pokemon['id']}. {random_pokemon['name']}".upper()), False, COLORS['BLACK']), (60, 40))
     DISPLAYSURF.blit(PKMN_ID_SURF, (350, 70))
-    PKMN_DESCRIPTION_SURF.fill(COLORS['LIGHT_BLUE'])
 
+
+    PKMN_DESCRIPTION_SURF.fill(COLORS['LIGHT_BLUE'])
     DISPLAYSURF.blit(PKMN_DESCRIPTION_SURF, (50, 290))
     DISPLAYSURF.blit(ACTUAL_DESCRIPTION_SURF, (110, 300))
     ACTUAL_DESCRIPTION_SURF.fill(COLORS['WHITE'])
@@ -72,9 +79,19 @@ def display_PKMN_info(random_pokemon):
     DISPLAYSURF.blit(DARK_BLUE_BAR, (710, 305))
     DARK_BLUE_BAR.fill(COLORS['DARK_BLUE'])
 
-    DISPLAYSURF.blit(type_IMG.subsurface(get_type_sprite(random_pokemon['type'][0])), (450, 180))
+    DISPLAYSURF.blit(type_1, (450, 180))
     if len(random_pokemon['type']) > 1:
-        DISPLAYSURF.blit(type_IMG.subsurface(get_type_sprite(random_pokemon['type'][1])), (530, 180))
+        DISPLAYSURF.blit(type_2, (545, 180))
     # BASE_STATS_SURF.fill(COLORS['RED'])
     # DISPLAYSURF.blit(BASE_STATS_SURF, (230,230 ))
     # HEIGHT_WEIGHT_SURF.fill(COLORS['BLACK'])
+    DISPLAYSURF.blit(THEME['FONTS']['DEFAULT'].render('HW', False, COLORS['BLACK']), (450, 230))
+    DISPLAYSURF.blit(THEME['FONTS']['DEFAULT'].render('WT', False, COLORS['BLACK']), (450, 260))
+    DISPLAYSURF.blit(THEME['FONTS']['DEFAULT'].render(f"{random_pokemon['height']}\"", False, COLORS['BLACK']), (500, 230))
+    DISPLAYSURF.blit(THEME['FONTS']['DEFAULT'].render(f"{random_pokemon['weight']} lbs", False, COLORS['BLACK']), (500, 260))
+
+    DISPLAYSURF.blit(THEME['FONTS']['SMOL'].render(random_pokemon['description'][:65], True, COLORS['BLACK']), (120, 310))
+    if len(random_pokemon['description']) > 65:
+        DISPLAYSURF.blit(THEME['FONTS']['SMOL'].render(random_pokemon['description'][65:], True, COLORS['BLACK']), (120, 330))
+        if len(random_pokemon['description']) > 130:
+            DISPLAYSURF.blit(THEME['FONTS']['SMOL'].render(random_pokemon['description'][130:], True, COLORS['BLACK']), (120, 350))

@@ -16,11 +16,11 @@ POKEDEX_ALL= get_data("pokedex")
 gen="4"
 
 GENERATION={
-    "1": [0,151],
+    "1": [1,151],
     "2": [151,251],
     "3": [251,386],
     "4": [386,494],
-    "all": [0, 494]
+    "all": [1, 494]
 }
 
 GENERATION_index={
