@@ -1,6 +1,5 @@
 from pokemon import *
 from random import choice
-from data import GENERATION_index,gen
 
 def get_pokemon(id, shiny):
     return Pokemon(id, shiny).get_attributes()
@@ -30,5 +29,7 @@ def get_type_sprite(type):
     pos= (0,TYPES_SPRITE[type])
     return pos
 
-random_pokemon= get_pokemon(3, False)
+ID= choice(range(GENERATION[gen][0], GENERATION[gen][1]))
+
+random_pokemon= get_pokemon(ID, False)
 

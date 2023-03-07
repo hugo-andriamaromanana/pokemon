@@ -2,7 +2,7 @@ from data import get_pokemon
 from random import choice
 from data import GENERATION,gen
 
-ID= choice(range(GENERATION[gen][0], GENERATION[gen][1]))
+
 
 class Pokemon:
     def __init__(self, id, shiny):
@@ -32,13 +32,3 @@ class Pokemon:
             "weight": self.__weight,
             "description": self.__description
         }
-    
-pokemon1= Pokemon(ID, True)
-
-def pretty_print(data):
-    for key, value in data.items():
-        print('-' * 20)
-        print(key, ":", value)
-
-
-pretty_print(pokemon1.get_attributes())
