@@ -124,27 +124,23 @@ pkmn_moves_data = get_data("pokemon_moves")
 # create_unique_moves(pkmn_moves_data)
 
 def get_move_data(unique_moves):
-    for i in range(1, 493):
-        bruh = 5
-        if len(pkmn_moves_data[str(i)]) < 5:
-            bruh = len(pkmn_moves_data[str(i)])
-        for j in range(0, bruh):
-            url = f"https://pokeapi.co/api/v2/move/{pkmn_moves_data[str(i)][j]}/"
-            response = requests.get(url)
-            data = response.json()
-            unique_moves[pkmn_moves_data[str(i)][j]] = {
-                "accuracy": data["accuracy"],
-                "power": data["power"],
-                "pp": data["pp"],
-                "type": data["type"]["name"],
-                "damage_class": data["damage_class"]["name"],
-                "effect_chance": data["effect_chance"],
-                "effect_entries": data["effect_entries"][0]["effect"],
-                "flavor_text_entries": data["flavor_text_entries"][0]["flavor_text"],
-                "generation": data["generation"]["name"],
-                "priority": data["priority"],
-                "target": data["target"]["name"],
-            }
+    for i in unique_moves:
+        url = f"https://pokeapi.co/api/v2/move/{i}/"
+        response = requests.get(url)
+        data = response.json()
+        unique_moves[i] = {
+            "accuracy": data["accuracy"],
+            "power": data["power"],
+            "pp": data["pp"],
+            "type": data["type"]["name"],
+            "damage_class": data["damage_class"]["name"],
+            "effect_chance": data["effect_chance"],
+            "effect_entries": data["effect_entries"][0]["effect"],
+            "flavor_text_entries": data["flavor_text_entries"][0]["flavor_text"],
+            "generation": data["generation"]["name"],
+            "priority": data["priority"],
+            "target": data["target"]["name"],
+        }
     dump_data("unique_moves", unique_moves)
 
 unique_moves = get_data("unique_moves")
