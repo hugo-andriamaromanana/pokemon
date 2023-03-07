@@ -2,29 +2,25 @@ import json
 import os
 
 def get_data(name):
-    with open("json/"+f"{name}.json") as f:
+    path= os.path.join("json", f"{name}.json")
+    with open(path, "r") as f:
         data = json.load(f)
     return data
 
 def dump_data(name, data):
-    with open("json/"+f"{name}.json", "w") as f:
+    path= os.path.join("json", f"{name}.json")
+    with open(path, "w") as f:
         json.dump(data, f, indent=4)
 
-def convert_to_dict(data):
-    new_data = {}
-    for i in range(len(data)):
-        new_data[str(i)] = data[i]
-    return new_data
-
 POKEDEX_ALL= get_data("pokedex")
-gen="1"
+gen="4"
 
 GENERATION={
-    "1": POKEDEX_ALL[0:151],
-    "2": POKEDEX_ALL[151:251],
-    "3": POKEDEX_ALL[251:386],
-    "4": POKEDEX_ALL[386:493],
-    "all": POKEDEX_ALL
+    "1": [0,151],
+    "2": [151,251],
+    "3": [251,387],
+    "4": [386,493],
+    "all": [0, 493]
 }
 
 GENERATION_index={
@@ -34,10 +30,14 @@ GENERATION_index={
     "4": 386,
     "all": 0
 }
-POKEDEX= GENERATION[gen]
 
-POKEDEX= convert_to_dict(POKEDEX)
+def get_pokedex(gen):
+    if gen=="all":
+        return POKEDEX_ALL
+    else:
+        return {str(i): POKEDEX_ALL[str(i)] for i in range(GENERATION[gen][0], GENERATION[gen][1])}
 
+POKEDEX= get_pokedex(gen)
 PKMN_descriptions= get_data("descriptions")
 PKMN_height_weight= get_data("height_weight")
 PKMN_move_set= get_data("move_set")
@@ -56,9 +56,9 @@ def get_pokemon(id, shiny):
             "back": os.path.join("pokemon_sprites", "back", f"{id+GENERATION_index[gen]+1}.png"),
             }
     return {
-            "name": POKEDEX[str(id)]['name']["english"],
-            "type": POKEDEX[str(id)]['type'],
-            "stats": POKEDEX[str(id)]["base"],
+            "name": POKEDEX[str(id+GENERATION_index[gen])]['name']["english"],
+            "type": POKEDEX[str(id+GENERATION_index[gen])]['type'],
+            "stats": POKEDEX[str(id+GENERATION_index[gen])]["base"],
             "description": PKMN_descriptions[str(id+GENERATION_index[gen]+1)],
             "height": PKMN_height_weight[str(id+GENERATION_index[gen]+1)]["height"],
             "weight": PKMN_height_weight[str(id+GENERATION_index[gen]+1)]["weight"],
