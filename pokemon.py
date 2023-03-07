@@ -6,72 +6,42 @@ language= "english"
 
 class Pokemon:
     def __init__(self, id, language, shiny):
-        self.id= id
-        self.language= language
-        self.shiny= shiny
-        self.name= get_pokemon(id, language, shiny)["name"]
-        self.type= get_pokemon(id, language, shiny)["type"]
-        self.stats= get_pokemon(id, language, shiny)["stats"]
-        self.sprites= get_pokemon(id, language, shiny)["sprites"]
-        self.hp= self.stats["HP"]
-        self.attack= self.stats["Attack"]
-        self.defense= self.stats["Defense"]
-        self.sp_attack= self.stats["Sp. Attack"]
-        self.sp_defense= self.stats["Sp. Defense"]
-        self.speed= self.stats["Speed"]
-        self.front= self.sprites["front"]
-        self.front2= self.sprites["front2"]
-        self.back= self.sprites["back"]
-        self.description= PKMN_descriptions[str(id+GENERATION_index[gen]+1)]
-        self.height= PKMN_height_weight[str(id+GENERATION_index[gen]+1)]["height"]
-        self.weight= PKMN_height_weight[str(id+GENERATION_index[gen]+1)]["weight"]
-        self.move_set= PKMN_move_set[str(id+GENERATION_index[gen]+1)]
+        self.__id= id
+        self.__language= language
+        self.__shiny= shiny
+        self.__data= get_pokemon(self.__id, self.__language, self.__shiny)
+        self.__name= self.__data["name"]
+        self.__type= self.__data["type"]
+        self.__stats= self.__data["stats"]
+        self.__sprites= self.__data["sprites"]
+        self.__front= self.__sprites["front"]
+        self.__front2= self.__sprites["front2"]
+        self.__back= self.__sprites["back"]
+        self.__description= PKMN_descriptions[str(self.__id)]
+        self.__height= PKMN_height_weight[str(self.__id)]["height"]
+        self.__weight= PKMN_height_weight[str(self.__id)]["weight"]
+        self.__move_set= PKMN_move_set[str(self.__id)]
 
-    def __getattribute__(self, name):
-        if name == "HP":
-            return self.stats["HP"]
-        elif name == "Attack":
-            return self.stats["Attack"]
-        elif name == "Defense":
-            return self.stats["Defense"]
-        elif name == "Sp. Attack":
-            return self.stats["Sp. Attack"]
-        elif name == "Sp. Defense":
-            return self.stats["Sp. Defense"]
-        elif name == "Speed":
-            return self.stats["Speed"]
-        elif name == "front":
-            return self.sprites["front"]
-        elif name == "front2":
-            return self.sprites["front2"]
-        elif name == "back":
-            return self.sprites["back"] 
-        elif name == "description":
-            return PKMN_descriptions[str(self.id+GENERATION_index[gen]+1)]
-        elif name == "height":
-            return PKMN_height_weight[str(self.id+GENERATION_index[gen]+1)]["height"]
-        elif name == "weight":
-            return PKMN_height_weight[str(self.id+GENERATION_index[gen]+1)]["weight"]
-        elif name == "move_set":
-            return PKMN_move_set[str(self.id+GENERATION_index[gen]+1)]
-        else:
-            return object.__getattribute__(self, name)
+    def get_attributes(self):
+        return {
+            "name": self.__name,
+            "type": self.__type,
+            "stats": self.__stats,
+            "sprites": self.__sprites,
+            "front": self.__front,
+            "front2": self.__front2,
+            "back": self.__back,
+            "move_set": self.__move_set,
+            "description": self.__description,
+            "height": self.__height,
+            "weight": self.__weight
+        }
+    
+pokemon1= Pokemon(ID, language, True)
 
-pokemon= Pokemon(ID, language, False)
+def pretty_print(data):
+    for key, value in data.items():
+        print('-' * 20)
+        print(key, ":", value)
 
-print('-'*20)
-print(pokemon.id)
-print(pokemon.id + GENERATION_index[gen])
-print('-'*20)
-print(pokemon.name)
-print(pokemon.type)
-print('-'*20)
-print(pokemon.hp)
-print(pokemon.attack)
-print(pokemon.defense)
-print(pokemon.sp_attack)
-print(pokemon.sp_defense)
-print('-'*20)
-print(pokemon.description)
-print(pokemon.move_set)
-print('-'*20)
+pretty_print(pokemon1.get_attributes())
