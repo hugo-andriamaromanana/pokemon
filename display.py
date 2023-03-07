@@ -37,6 +37,7 @@ pygame.display.set_caption("Pokemon")
 
 
 def display_PKMN_info():
+    type_IMG = os.path.join('type_sprites', 'type.png')
     TOP_WINDOW.fill(THEME['BACKGROUND'])
     DISPLAYSURF.blit(TOP_WINDOW, (0, 0))
     BOTTOM_WINDOW.fill(COLORS['GREY'])
@@ -49,11 +50,9 @@ def display_PKMN_info():
     PKMN_SPRITE_SURF.fill(COLORS['WHITE'])
     PKMN_ID_SURF.fill(COLORS['BEIGE'])
     DISPLAYSURF.blit(PKMN_ID_SURF, (370, 70))
-    DISPLAYSURF.blit(pygame.image.load(os.path.join('type_sprites', 'type.png')).subsurface(
-        get_type_sprite(random_pokemon['type'][0])), (300, 180))
+    DISPLAYSURF.blit(pygame.image.load(type_IMG).subsurface(get_type_sprite(random_pokemon['type'][0])), (450, 180))
     if len(random_pokemon['type']) > 1:
-        DISPLAYSURF.blit(pygame.image.load(os.path.join('type_sprites', 'type.png')).subsurface(
-            get_type_sprite(random_pokemon['type'][1])), (400, 180))
+        DISPLAYSURF.blit(pygame.image.load(type_IMG).subsurface(get_type_sprite(random_pokemon['type'][1])), (530, 180))
     # TYPE_SURF.fill(COLORS['PURPLE'])
     # DISPLAYSURF.blit(TYPE_SURF, (300, 180))
     # PKMN_DESCRIPTION_SURF.fill(COLORS['BLUE'])
