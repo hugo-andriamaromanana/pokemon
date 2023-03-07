@@ -31,7 +31,6 @@ def get_type_sprite(type):
     return TYPES_SPRITE[type]
 
 ID= choice(range(GENERATION[gen][0], GENERATION[gen][1]))
-# ID= 10+GENERATION_index[gen]
 
-random_pokemon= get_pokemon(ID, False)
+random_pokemon= Pokemon(ID, False).get_attributes()
 
