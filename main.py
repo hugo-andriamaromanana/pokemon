@@ -1,10 +1,16 @@
 from display import *
 from pygameKEYS import *
 
-runnning= True
+if __name__ == "__main__":
 
-while runnning:
-    display_PKMN_info()
-    events= pygame.event.get()
-    for event in events:
-        running=ESC_key_pressed(events)
+    running = True
+
+    while running:
+
+        events = pygame.event.get()
+        display_PKMN_info()
+
+        for event in events:
+            running = ESC_KEYDOWN(event)
+
+        pygame.display.update()

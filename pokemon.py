@@ -39,4 +39,5 @@ def pretty_print(data):
         print('-' * 20)
         print(key, ":", value)
 
+
 pretty_print(pokemon1.get_attributes())
