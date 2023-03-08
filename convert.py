@@ -92,7 +92,6 @@
 # # get_pokemon_moves_data(pokemon_moves_data)
 
 
-
 # # def get_pokemon_moves_data(pokemon_moves_data):
 # #     for i in range(1, 493):
 # #         url = f"https://pokeapi.co/api/v2/pokemon/{i}/"
@@ -167,4 +166,3 @@
 # poke_dex= get_data('pokedex')
 # poke_dex= turn_to_dic(poke_dex)
 # dump_data('pokedex', poke_dex)
-

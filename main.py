@@ -1,15 +1,17 @@
 from pygameKEYS import *
 
+
 def reset_pokemon():
     global random_pokemon
-    ID= choice(range(GENERATION[gen][0], GENERATION[gen][1]))
-    random_pokemon= Pokemon(ID, False).get_attributes()
+    ID = choice(range(GENERATION[gen][0], GENERATION[gen][1]))
+    random_pokemon = Pokemon(ID, False).get_attributes()
+
 
 if __name__ == "__main__":
 
     running = True
-    ID= choice(range(GENERATION[gen][0], GENERATION[gen][1]))
-    random_pokemon= Pokemon(ID, False).get_attributes() 
+    ID = choice(range(GENERATION[gen][0], GENERATION[gen][1]))
+    random_pokemon = Pokemon(ID, False).get_attributes()
 
     while running:
 

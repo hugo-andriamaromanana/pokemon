@@ -13,7 +13,7 @@ COLORS = {
     'GREY': (128, 128, 128),
     'DARK_GREEN': (0, 100, 0),
     'DARK_RED': (139, 0, 0),
-    'DARK_BLUE': (0, 0, 139),
+    'DARK_BLUE': (104, 144, 200),
     'DARK_YELLOW': (139, 139, 0),
     'DARK_ORANGE': (255, 140, 0),
     'DARK_PURPLE': (128, 0, 0),
@@ -26,14 +26,16 @@ COLORS = {
     'LIGHT_PURPLE': (128, 0, 128),
     'LIGHT_PINK': (255, 192, 203),
     'LIGHT_GREY': (211, 211, 211),
-    'WEIRD_GREEN': (196, 207, 161),
+    'WEIRD_GREEN': (182, 229, 174),
     'WEIRD_GREY': (65, 65, 65),
     'GOLD': (255, 215, 0),
     'SILVER': (192, 192, 192),
     'BRONZE': (205, 127, 50),
     'WOOD': (139, 69, 19),
     'WOOD2': (210, 105, 30),
-    'BEIGE': (248, 248, 192)
-
+    'BEIGE': (248, 248, 192),
+    'BEIGE2': (208, 184, 96),
+    'CLOUD': (255, 255, 255, 50),
+    'LESS_WHITE': (239, 239, 248),
+    'LESS_BEIGE': (248, 248, 248)
 }
-
