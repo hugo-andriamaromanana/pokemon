@@ -75,7 +75,8 @@ def get_pokemon(id, shiny):
         "height": PKMN_height_weight[str(id)]["height"],
         "weight": PKMN_height_weight[str(id)]["weight"],
         "move_set": PKMN_move_set[str(id)],
-        "sprites": path
+        "sprites": path,
+        "footprint": os.path.join("pokemon_sprites", "footprints", f"{id}.png")
     }
 
 
