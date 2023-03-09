@@ -16,7 +16,7 @@ def dump_data(name, data):
 
 
 POKEDEX_ALL = get_data("pokedex")
-gen = "all"
+gen = "1"
 
 GENERATION = {
     "1": [1, 151],
